@@ -2,6 +2,8 @@
 
 A document site based Markdown.
 
+![Snapshot](xdoc.png)
+
 ## Usage
 
 ### Standalone
