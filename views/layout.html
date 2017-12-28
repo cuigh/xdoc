@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>时光网开发文档中心</title>
+    <link href="/css/bootstrap.css?v={{.Version}}" rel="stylesheet">
+    <link href="/css/mtime.sba2.css?v={{.Version}}" rel="stylesheet">
+    <link href="/css/metis-menu.css?v={{.Version}}" rel="stylesheet">
+    <link href="/css/markdown.css?v={{.Version}}" rel="stylesheet">
+    <link href="/css/highlight.css?v={{.Version}}" rel="stylesheet">
+    <link href="/css/mermaid.forest.css?v={{.Version}}" rel="stylesheet">
+</head>
+<body style="padding-top: 50px">
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+<div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">显示或隐藏导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">时光网开发文档中心</a>
+</div>
+
+<ul class="nav navbar-nav">
+    {{range .Menu.TopMenus}}
+    <li{{if $.Menu.IsActive .}} class="active" {{end}}><a href="{{.URL}}">{{.Name}}</a></li>
+    {{end}}
+</ul>
+
+<p class="navbar-text navbar-right" style="padding-right:30px;font-style:italic">Powered by <a href="//github.com/cuigh/xdoc" class="navbar-link">xdoc</a></p>
+
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+            {{range .Menu.LeftMenus}} {{- if eq (len .VisibleItems) 0 -}}
+            <li>
+                <a href="{{.URL}}" {{if $.Menu.IsActive .}} class="active" {{end}}>
+                    {{.Name}}{{if gt (len .VisibleItems) 0}}<span class="glyphicon arrow"></span>{{end}}
+                </a>
+            </li>
+            {{else}}
+            <li{{if $.Menu.IsActive .}} class="active" {{end}}>
+                <a href="{{.URL}}">
+                    {{.Name}}{{if gt (len .VisibleItems) 0}}<span class="glyphicon arrow"></span>{{end}}
+                </a> {{if gt (len .VisibleItems) 0}}
+                <ul class="nav nav-second-level">
+                    {{range .VisibleItems}}
+                    <li>
+                        <a href="{{.URL}}" {{if $.Menu.IsActive .}} class="active" {{end}}>{{.Name}}</a>
+                    </li>
+                    {{end}}
+                </ul>
+                {{end}}
+                </li>
+                {{end}} {{end}}
+        </ul>
+    </div>
+</div>
+</nav>
+
+<div id="page-wrapper" {{if not .Menu.Current}} style="margin-left:0; padding-top: 15px"{{end}}>
+<div class="row">
+    {{- if .Menu.Current -}}
+    <ol class="breadcrumb">
+        {{range .Menu.Breadcrumb}} {{if or (eq .ID $.Menu.Current.ID) (eq .URL "#")}}
+        <li class="active">{{.Name}}</li>
+        {{else}}
+        <li><a href="{{.URL}}">{{.Name}}</a></li>
+        {{end}} {{end}}
+        <a class="pull-right" id="a_toc" href="##" title="显示或隐藏文档目录">目录</a>
+    </ol>
+    {{- end -}}
+</div>
+<div class="row">
+    <div id="div_toc" class="toc">
+    </div>
+    <div id="div_content" class="markdown-body">
+        {{.Content}}
+    </div>
+    {{if .Logs}}
+    <hr>
+    <div id="div_logs" class="panel panel-success">
+        <div class="panel-heading">最近修改记录</div>
+        <table id="table_records" class="table table-bordered table-hover table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>用户</th>
+                    <th>描述</th>
+                    <!--<th>HASH</th>-->
+                    <th>时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .Logs}}
+                <tr>
+                    <td>{{.User}}</td>
+                    <td>{{.Comment}}</td>
+                    <!--<td>{{.Hash}}</td>-->
+                    <td>{{.Time}}</td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+    </div>
+    {{end}}
+</div>
+</div>
+
+</div>
+<script src="/js/jquery.js?v={{.Version}}" type="text/javascript"></script>
+<script src="/js/bootstrap.js?v={{.Version}}" type="text/javascript"></script>
+<script src="/js/mtime.sba2.js?v={{.Version}}" type="text/javascript"></script>
+<script src="/js/metis-menu.js?v={{.Version}}" type="text/javascript"></script>
+<script src="/js/mtime.ext.js?v={{.Version}}" type="text/javascript"></script>
+<script src="/js/highlight.pack.js?v={{.Version}}" type="text/javascript"></script>
+<script src="/js/mermaid.min.js?v={{.Version}}" type="text/javascript"></script>
+<script src="/js/doc.js?v={{.Version}}" type="text/javascript"></script>
+</body>
+
+</html>

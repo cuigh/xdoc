@@ -1,0 +1,7 @@
+[[constraint]]
+  branch = "master"
+  name = "github.com/cuigh/auxo"
+
+[[constraint]]
+  name = "github.com/russross/blackfriday"
+  version = "2.0.0"
