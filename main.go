@@ -60,7 +60,7 @@ func server() *web.Server {
 	return s
 }
 
-func mark(c web.Context) error  {
+func mark(c web.Context) error {
 	u, p := findFile(c.Request().RequestURI, "index.md", "README.md", "index.html")
 	if files.NotExist(p) {
 		return web.ErrNotFound
