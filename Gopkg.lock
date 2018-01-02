@@ -5,7 +5,7 @@
   branch = "master"
   name = "github.com/cuigh/auxo"
   packages = [".","app","app/flag","byte/size","config","data","encoding/yaml","errors","ext/files","ext/reflects","ext/texts","ext/times","log","log/console","log/file","net/web","net/web/renderer/std","net/web/router","security","util/cast","util/debug"]
-  revision = "fafcf4c656a4da00d8e72d46e43252f9d8aa51e8"
+  revision = "f599f84ec7ef56f01457d0fb0d8eeb9d8c100b43"
 
 [[projects]]
   name = "github.com/russross/blackfriday"

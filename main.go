@@ -47,7 +47,7 @@ func server() *web.Server {
 	dir := filepath.Dir(app.Path())
 
 	s := web.Auto()
-	s.Renderer = std.Must(filepath.Join(dir, "views"))
+	s.Renderer = std.Must()
 
 	// register static handlers
 	s.File("/favicon.ico", filepath.Join(dir, "assets/favicon.ico"))
