@@ -1,10 +1,10 @@
 FROM golang:alpine AS build
 WORKDIR /go/src/github.com/cuigh/xdoc/
 ADD . .
-RUN dep ensure
+#RUN dep ensure
 RUN go build -ldflags "-s -w"
 
-FROM alpine:3.6
+FROM alpine:3.7
 LABEL maintainer="noname@live.com"
 ENV XDOC_DIR /docs
 WORKDIR /app

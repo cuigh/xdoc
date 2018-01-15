@@ -121,9 +121,6 @@ func (m *Menu) initMenuItem(n *Node) {
 			n.VisibleItems = append(n.VisibleItems, sm)
 		}
 	}
-	if n.Level > 1 && len(n.Items) > 0 {
-		n.URL = "##"
-	}
 }
 
 // Node 菜单项信息

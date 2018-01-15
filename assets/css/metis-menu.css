@@ -62,3 +62,7 @@
 .active > a > .fa.plus-minus:before {
     content: "\f068";
 }
+
+ul.nav a {
+    cursor: pointer;
+}

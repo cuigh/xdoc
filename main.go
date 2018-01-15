@@ -27,7 +27,7 @@ func main() {
 	config.SetEnvPrefix("")
 
 	app.Name = "xdoc"
-	app.Version = "0.1"
+	app.Version = "0.1.1"
 	app.Desc = "A document site based Markdown"
 	app.Action = func(ctx *app.Context) {
 		docsDir = config.GetString("xdoc.dir")
