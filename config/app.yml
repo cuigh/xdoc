@@ -1,7 +1,8 @@
 name: xdoc
 banner: true
 
-#xdoc:
+xdoc:
+  title: 文档中心
 #  dir: /docs
 
 web:

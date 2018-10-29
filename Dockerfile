@@ -4,7 +4,7 @@ ADD . .
 #RUN dep ensure
 RUN go build -ldflags "-s -w"
 
-FROM alpine:3.7
+FROM alpine:3.8
 LABEL maintainer="noname@live.com"
 ENV XDOC_DIR /docs
 WORKDIR /app

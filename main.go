@@ -27,7 +27,7 @@ func main() {
 	config.SetEnvPrefix("")
 
 	app.Name = "xdoc"
-	app.Version = "0.1.1"
+	app.Version = "0.1.2"
 	app.Desc = "A document site based Markdown"
 	app.Action = func(ctx *app.Context) {
 		docsDir = config.GetString("xdoc.dir")
@@ -80,6 +80,7 @@ func mark(c web.Context) error {
 		"Version": app.Version,
 		"Content": template.HTML(content),
 		"Menu":    menu.Get().GetInfo(u),
+		"Title":   config.GetString("xdoc.title"),
 	}
 	return c.Render("layout", d)
 }
